@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT Exists SalesOrderHeader
 (
-    SalesOrder                        INT         NOT NULL,
+    PK_SalesOrder                        INT         NOT NULL,
     SalesOrderNumber                  VARCHAR(30) NOT NULL,
     OrderDate                         DATE        NOT NULL,
     DueDate                           DATE        NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT Exists SalesOrderHeader
     FK_ShipToAddress_SalesOrderHeader INT         NOT NULL,
     FK_ShipMethod_SalesOrderHeader    INT         NOT NULL,
 
-    PRIMARY KEY (SalesOrder),
+    PRIMARY KEY (PK_SalesOrder),
     FOREIGN KEY (FK_OrderStatusID_SalesOrderHeader) references OrderStatus (PK_OrderStatus),
     FOREIGN KEY (FK_Customer_SalesOrderHeader) references Customer (PK_Customer),
     FOREIGN KEY (FK_BillToAddress_SalesOrderHeader) references Address (PK_Address),

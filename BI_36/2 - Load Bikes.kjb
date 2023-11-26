@@ -3,13 +3,19 @@
   <description/>
   <extended_description/>
   <job_version/>
+  <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
   <created_date>2023/11/25 18:53:46.703</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2023/11/25 19:36:04.274</modified_date>
+  <modified_date>2023/11/26 15:57:06.318</modified_date>
   <parameters>
-    </parameters>
+    <parameter>
+      <name>MyPath</name>
+      <default_value>/Users/arbnormorina/Desktop/2023:2024/Winter Semester/Business Intellegence/Assigment 2/BI_Projects/BI_Assigment2</default_value>
+      <description/>
+    </parameter>
+  </parameters>
   <connection>
     <name>BI_Bikes_036</name>
     <server>localhost</server>
@@ -384,8 +390,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_Person</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}Person.csv</filename>
+      <tablename>Person</tablename>
+      <filename>${MyPath}/csv_data/Person.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -411,8 +417,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_Customer</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}Customer.csv</filename>
+      <tablename>Customer</tablename>
+      <filename>${MyPath}/csv_data/Customer.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -438,8 +444,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_OrderStatus</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}OrderStatus.csv</filename>
+      <tablename>OrderStatus</tablename>
+      <filename>${MyPath}/csv_data/OrderStatus.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -465,8 +471,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_ShipMethod</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}ShipMethod.csv</filename>
+      <tablename>ShipMethod</tablename>
+      <filename>${MyPath}/csv_data/ShipMethod.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -492,8 +498,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_Address</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}Address.csv</filename>
+      <tablename>Address</tablename>
+      <filename>${MyPath}/csv_data/Address.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -519,8 +525,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_Country</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}Country.csv</filename>
+      <tablename>Country</tablename>
+      <filename>${MyPath}/csv_data/Country.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -546,8 +552,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_ProductModel</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}ProductModel.csv</filename>
+      <tablename>ProductModel</tablename>
+      <filename>${MyPath}/csv_data/ProductModel.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -573,8 +579,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_ProductTopCategory</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}ProductTopCategory.csv</filename>
+      <tablename>ProductTopCategory</tablename>
+      <filename>${MyPath}/csv_data/ProductTopCategory.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -600,8 +606,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_ProductSubCategory</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}ProductSubCategory.csv</filename>
+      <tablename>ProductSubCategory</tablename>
+      <filename>${MyPath}/csv_data/ProductSubCategory.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -627,8 +633,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_SalesOrderHeader</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}SalesOrderHeader.csv</filename>
+      <tablename>SalesOrderHeader</tablename>
+      <filename>${MyPath}/csv_data/SalesOrderHeader.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -654,8 +660,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_Product</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}Product.csv</filename>
+      <tablename>Product</tablename>
+      <filename>${MyPath}/csv_data/Product.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
@@ -681,8 +687,8 @@
       <type>MYSQL_BULK_LOAD</type>
       <attributes/>
       <schemaname/>
-      <tablename>TB_SalesOrderDetail</tablename>
-      <filename>${Internal.Entry.Current.Directory}Users${Internal.Entry.Current.Directory}arbnormorina${Internal.Entry.Current.Directory}Desktop${Internal.Entry.Current.Directory}2023:2024${Internal.Entry.Current.Directory}Winter Semester${Internal.Entry.Current.Directory}Business Intellegence${Internal.Entry.Current.Directory}Assigment 2${Internal.Entry.Current.Directory}BI_Projects${Internal.Entry.Current.Directory}BI_Assigment2${Internal.Entry.Current.Directory}csv_data${Internal.Entry.Current.Directory}SalesOrderDetail.csv</filename>
+      <tablename>SalesOrderDetail</tablename>
+      <filename>${MyPath}/csv_data/SalesOrderDetail.csv</filename>
       <separator/>
       <enclosed/>
       <escaped/>
