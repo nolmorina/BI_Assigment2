@@ -1,18 +1,20 @@
-create table TB_SalesOrderHeader(
-SalesOrderID int,
-SalesOrderNumber int,
-OrderDate date,
-DueDate date,
-ShipDate date,
-OrderStatusID int,
-CustomerID int,
-BillToAddressID int,
-ShipToAddressID int,
-ShipMethodID int,
+CREATE TABLE IF NOT Exists SalesOrderHeader
+(
+    SalesOrder                        INT         NOT NULL,
+    SalesOrderNumber                  VARCHAR(30) NOT NULL,
+    OrderDate                         DATE        NOT NULL,
+    DueDate                           DATE        NOT NULL,
+    ShipDate                          DATE,
+    FK_OrderStatusID_SalesOrderHeader INT         NOT NULL,
+    FK_Customer_SalesOrderHeader      INT         NOT NULL,
+    FK_BillToAddress_SalesOrderHeader INT         NOT NULL,
+    FK_ShipToAddress_SalesOrderHeader INT         NOT NULL,
+    FK_ShipMethod_SalesOrderHeader    INT         NOT NULL,
 
-constraint PK_SalesOrderHeader primary key (SalesOrderID),
-constraint FK_Customer_SalesOrderHeader foreign key (CustomerID) references TB_Customer(CustomerID),
-constraint FK_BillToAddress_SalesOrderHeader foreign key (BillToAddressID) references TB_Address(AddressID),
-constraint FK_ShipToAddress_SalesOrderHeader foreign key (ShipToAddressID) references TB_Address(AddressID),
-constraint FK_ShipMethod__SalesOrderHeader foreign key (ShipMethodID) references TB_ShipMethod(ShipMethodID)
+    PRIMARY KEY (SalesOrder),
+    FOREIGN KEY (FK_OrderStatusID_SalesOrderHeader) references OrderStatus (PK_OrderStatus),
+    FOREIGN KEY (FK_Customer_SalesOrderHeader) references Customer (PK_Customer),
+    FOREIGN KEY (FK_BillToAddress_SalesOrderHeader) references Address (PK_Address),
+    FOREIGN KEY (FK_ShipToAddress_SalesOrderHeader) references Address (PK_Address),
+    FOREIGN KEY (FK_ShipMethod_SalesOrderHeader) references ShipMethod (PK_ShipMethod)
 );

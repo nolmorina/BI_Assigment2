@@ -1,15 +1,15 @@
-create table TB_Product(
-ProductID int,
-ProductName varchar(255),
-ProductNumber int,
-StandardCost int,
-ListPrice int,
-ProductSubCategoryID int,
-ProductModelID int,
-SellStartDate date,
-SellEndDate date,
-
-constraint PK_Product primary key (ProductID),
-constraint FK_ProductSubCategory_Product foreign key (ProductSubCategoryID) references TB_ProductSubCategory(ProductSubCategoryID),
-constraint FK_ProductModel_Product foreign key (ProductModelID) references TB_ProductModel(ProductModelID)
+Create TABLE IF NOT Exists Product
+(
+    PK_Product                    INT            NOT NULL,
+    ProductName                   VARCHAR(50)    NOT NULL,
+    Productnumber                 VARCHAR(50)    NOT NULL,
+    StandardCost                  DECIMAL(13, 4) NOT NULL,
+    ListPrice                     DECIMAL(13, 4) NOT NULL,
+    FK_ProductSubCategory_Product INT,
+    FK_ProductModel_Product       INT,
+    SellStartDate                 DATE           NOT NULL,
+    SellEndDate                   DATE,
+    PRIMARY KEY (PK_Product),
+    FOREIGN KEY (FK_ProductSubCategory_Product) references ProductSubCategory (PK_ProductSubCategory),
+    FOREIGN KEY (FK_ProductModel_Product) references ProductModel (PK_ProductModel)
 );

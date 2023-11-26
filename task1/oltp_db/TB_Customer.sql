@@ -1,7 +1,8 @@
-create table TB_Customer(
-CustomerID int,
-PersonID int,
-AccountNumber int,
-CONSTRAINT PK_Customer PRIMARY KEY (CustomerID),
-CONSTRAINT FK_Person_Customer FOREIGN KEY (PersonID) REFERENCES TB_Person(PersonID)
+Create TABLE IF NOT Exists Customer
+(
+    PK_Customer        INT         NOT NULL,
+    FK_Person_Customer INT         NOT NULL,
+    AccountNumber      VARCHAR(30) NOT NULL,
+    PRIMARY KEY (PK_Customer),
+    FOREIGN KEY (FK_Person_Customer) references Person (PK_Person)
 );

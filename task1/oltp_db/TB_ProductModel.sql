@@ -1,5 +1,6 @@
-create table TB_ProductModel(
-ProductModelID int,
-ProductModelName varchar(255),
-constraint PK_ProductModel primary key (ProductModelID)
+Create TABLE IF NOT Exists ProductModel
+(
+    PK_ProductModel  INT         NOT NULL,
+    ProductModelName VARCHAR(50) NOT NULL,
+    PRIMARY KEY (PK_ProductModel)
 );

@@ -1,6 +1,7 @@
-create table TB_ProductTopCategory(
-ProductTopCategoryID int,
-Name varchar(255),
-ShipSurcharge int,
-constraint PK_ProductTopCategory primary key (ProductTopCategoryID)
+Create TABLE IF NOT Exists ProductTopCategory
+(
+    PK_ProductTopCategory INT         NOT NULL,
+    Name                  VARCHAR(50) NOT NULL,
+    ShipSurcharge         DECIMAL(13, 4),
+    PRIMARY KEY (PK_ProductTopCategory)
 );

@@ -1,11 +1,11 @@
-create table TB_SalesOrderDetail(
-SalesOrderDetailID int,
-SalesOrderID int,
-ProductID int,
-OrderQty int,
-UnitPrice int,
-
-constraint PK_SalesOrderDetail primary key (SalesOrderDetailID),
-constraint FK_SalesOrder_SalesOrderDetail foreign key (SalesOrderID) references TB_SalesOrderHeader(SalesOrderID),
-constraint FK_Product_SalesOrderDetail foreign key (ProductID) references TB_Product(ProductID)
+Create TABLE IF NOT Exists SalesOrderDetail
+(
+    PK_SalesOrderDetail            INT            NOT NULL,
+    FK_SalesOrder_SalesOrderDetail INT            NOT NULL,
+    FK_Product_SalesOrderDetail    INT            NOT NULL,
+    OrderQty                       INT            NOT NULL,
+    UnitPrice                      DECIMAL(13, 4) NOT NULL,
+    PRIMARY KEY (PK_SalesOrderDetail),
+    FOREIGN KEY (FK_Product_SalesOrderDetail) references Product (PK_Product),
+    FOREIGN KEY (FK_SalesOrder_SalesOrderDetail) references SalesOrderHeader (PK_SalesOrder)
 );

@@ -1,7 +1,8 @@
-create table TB_ShipMethod(
-ShipMethodID int,
-ShipMethodName varchar(255),
-ShipBase varchar(255),
-ShipRate int,
-constraint PK_ShipMethod primary key (ShipMethodID)
+CREATE TABLE IF NOT Exists ShipMethod
+(
+    PK_ShipMethod  INT NOT NULL,
+    ShipMethodName VARCHAR(50),
+    ShipBase       DECIMAL(13, 4),
+    ShipRate       DECIMAL(13, 4),
+    PRIMARY KEY (PK_ShipMethod)
 );
