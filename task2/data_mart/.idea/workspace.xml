@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b94e731c-f506-48a4-8477-22bb5dc691f2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../BI_36/repository.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../BI_36/repository.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/Address.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/Country.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/Customer.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/OrderStatus.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/Person.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/Product.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/ProductModel.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/ProductSubCategory.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/ProductTopCategory.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/SalesOrderDetail.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/SalesOrderHeader.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../csv_data/ShipMethod.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../group_36.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_Address.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_Country.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_Customer.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_OrderStatus.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_Person.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_Product.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_ProductModel.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_ProductSubCategory.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_ProductTopCategory.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_SalesOrderDetail.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_SalesOrderHeader.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/Old data/TB_ShipMethod.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_Address.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_Country.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_Customer.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_OrderStatus.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_Person.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_Product.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_ProductModel.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_ProductSubCategory.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_ProductTopCategory.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_SalesOrderDetail.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_SalesOrderHeader.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task1/oltp_db/TB_ShipMethod.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dim_Customer.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dim_Date.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dim_Location.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dim_Product.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fact_InternetSales.sql" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2YjCh7gfzXcRG4kjAm0G2OiVVYc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Disk D\Master\1. Semester\Business Intelligence\assignement2\BI_Assigment2\task2\data_mart" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b94e731c-f506-48a4-8477-22bb5dc691f2" name="Changes" comment="" />
+      <created>1701029720861</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701029720861</updated>
+      <workItem from="1701029723406" duration="6810000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
