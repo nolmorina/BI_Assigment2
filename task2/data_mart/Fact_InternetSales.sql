@@ -24,6 +24,6 @@ Create TABLE IF NOT Exists Fact_InternetSales
     FOREIGN KEY (FK_Product_FactInternetSales) references Dim_Product (PK_DimProduct),
     FOREIGN KEY (FK_Customer_FactInternetSales) references Dim_Customer (PK_DimCusromer),
     FOREIGN KEY (FK_ShipToLocation_FactInternetSale) references Dim_Location (PK_DimLocation),
-
+    PRIMARY KEY (PK_FactInternetSales)
 );
 
