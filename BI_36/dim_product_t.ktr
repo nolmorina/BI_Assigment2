@@ -426,9 +426,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2023/11/28 21:56:16.967</created_date>
+    <created_date>2023/11/28 21:49:41.832</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/11/28 22:37:10.248</modified_date>
+    <modified_date>2023/11/28 23:00:18.418</modified_date>
     <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
@@ -519,10 +519,6 @@
     <index_tablespace/>
     <attributes>
       <attribute>
-        <code>EXTRA_OPTION_MYSQL.allowLoadLocalInfile</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
         <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
         <attribute>500</attribute>
       </attribute>
@@ -555,10 +551,6 @@
         <attribute>N</attribute>
       </attribute>
       <attribute>
-        <code>SQL_CONNECT</code>
-        <attribute>SET GLOBAL local_infile = 'ON';</attribute>
-      </attribute>
-      <attribute>
         <code>STREAM_RESULTS</code>
         <attribute>Y</attribute>
       </attribute>
@@ -578,13 +570,13 @@
   </connection>
   <order>
     <hop>
-      <from>DIM_Product_Data</from>
-      <to>Load product dat ato data mart</to>
+      <from>dim_product</from>
+      <to>Load data to data mart</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>DIM_Product_Data</name>
+    <name>dim_product</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -595,25 +587,28 @@
       <schema_name/>
     </partitioning>
     <connection>BI_Bikes_036</connection>
-    <sql>SELECT
-    p.PK_Product AS PK_DimProduct,
-    p.ProductName,
-    pm.ProductModelName,
-    psc.Name AS ProductSubCategoryName,
-    ptc.Name AS ProductTopCategoryName,
-    p.StandardCost,
-    p.ListPrice,
-    p.SellStartDate,
-    p.SellEndDate,
-    CASE
-        WHEN p.SellEndDate IS NULL OR p.SellEndDate > '2021-09-30' THEN 'Current'
+    <sql>SELECT 
+    Product.PK_Product AS ProductKey,
+    Product.ProductName,
+    COALESCE(ProductModel.ProductModelName, 'NoModelName') AS ProductModelName,
+    COALESCE(ProductSubCategory.Name, 'NoSubCategory') AS ProductSubCategoryName,
+    COALESCE(ProductTopCategory.Name, 'NoTopCategory') AS ProductTopCategoryName,
+    Product.StandardCost,
+    Product.ListPrice,
+    Product.SellStartDate AS StartDate,
+    Product.SellEndDate AS EndDate,
+    CASE 
+        WHEN Product.SellEndDate IS NULL OR Product.SellEndDate > '2021-09-30' THEN 'Current'
         ELSE 'Discontinued'
     END AS ProductStatus
-FROM Product p
-INNER JOIN ProductModel pm ON p.FK_ProductModel_Product = pm.PK_ProductModel
-INNER JOIN ProductSubCategory psc ON p.FK_ProductSubCategory_Product = psc.PK_ProductSubCategory
-INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategory = ptc.PK_ProductTopCategory;
-</sql>
+FROM 
+    Product
+LEFT JOIN 
+    ProductSubCategory ON Product.FK_ProductSubCategory_Product = ProductSubCategory.PK_ProductSubCategory
+LEFT JOIN 
+    ProductTopCategory ON ProductSubCategory.FK_ProductTopCategory_ProductSubCategory = ProductTopCategory.PK_ProductTopCategory
+LEFT JOIN 
+    ProductModel ON Product.FK_ProductModel_Product = ProductModel.PK_ProductModel;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -624,11 +619,11 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
       <value-meta>
         <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>PK_DimProduct</name>
+        <name>ProductKey</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>DIM_Location_Data</origin>
-        <comments>PK_DimProduct</comments>
+        <origin>dim_product</origin>
+        <comments>ProductKey</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -640,8 +635,8 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <date_format_locale>en_XK</date_format_locale>
+        <date_format_timezone>Europe/Vienna</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -650,7 +645,7 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <name>ProductName</name>
         <length>50</length>
         <precision>-1</precision>
-        <origin>DIM_Location_Data</origin>
+        <origin>dim_product</origin>
         <comments>ProductName</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -663,8 +658,8 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <date_format_locale>en_XK</date_format_locale>
+        <date_format_timezone>Europe/Vienna</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -673,7 +668,7 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <name>ProductModelName</name>
         <length>50</length>
         <precision>-1</precision>
-        <origin>DIM_Location_Data</origin>
+        <origin>dim_product</origin>
         <comments>ProductModelName</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -686,8 +681,8 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <date_format_locale>en_XK</date_format_locale>
+        <date_format_timezone>Europe/Vienna</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -696,7 +691,7 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <name>ProductSubCategoryName</name>
         <length>50</length>
         <precision>-1</precision>
-        <origin>DIM_Location_Data</origin>
+        <origin>dim_product</origin>
         <comments>ProductSubCategoryName</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -709,8 +704,8 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <date_format_locale>en_XK</date_format_locale>
+        <date_format_timezone>Europe/Vienna</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -719,7 +714,7 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <name>ProductTopCategoryName</name>
         <length>50</length>
         <precision>-1</precision>
-        <origin>DIM_Location_Data</origin>
+        <origin>dim_product</origin>
         <comments>ProductTopCategoryName</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -732,8 +727,8 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <date_format_locale>en_XK</date_format_locale>
+        <date_format_timezone>Europe/Vienna</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -742,7 +737,7 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <name>StandardCost</name>
         <length>13</length>
         <precision>4</precision>
-        <origin>DIM_Location_Data</origin>
+        <origin>dim_product</origin>
         <comments>StandardCost</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -755,8 +750,8 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <date_format_locale>en_XK</date_format_locale>
+        <date_format_timezone>Europe/Vienna</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -765,7 +760,7 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <name>ListPrice</name>
         <length>13</length>
         <precision>4</precision>
-        <origin>DIM_Location_Data</origin>
+        <origin>dim_product</origin>
         <comments>ListPrice</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -778,18 +773,18 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <date_format_locale>en_XK</date_format_locale>
+        <date_format_timezone>Europe/Vienna</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
         <type>Date</type>
         <storagetype>normal</storagetype>
-        <name>SellStartDate</name>
+        <name>StartDate</name>
         <length>-1</length>
         <precision>-1</precision>
-        <origin>DIM_Location_Data</origin>
-        <comments>SellStartDate</comments>
+        <origin>dim_product</origin>
+        <comments>StartDate</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -801,18 +796,18 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <date_format_locale>en_XK</date_format_locale>
+        <date_format_timezone>Europe/Vienna</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
         <type>Date</type>
         <storagetype>normal</storagetype>
-        <name>SellEndDate</name>
+        <name>EndDate</name>
         <length>-1</length>
         <precision>-1</precision>
-        <origin>DIM_Location_Data</origin>
-        <comments>SellEndDate</comments>
+        <origin>dim_product</origin>
+        <comments>EndDate</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -824,8 +819,8 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <date_format_locale>en_XK</date_format_locale>
+        <date_format_timezone>Europe/Vienna</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -834,7 +829,7 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <name>ProductStatus</name>
         <length>12</length>
         <precision>-1</precision>
-        <origin>DIM_Location_Data</origin>
+        <origin>dim_product</origin>
         <comments>ProductStatus</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -847,8 +842,8 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <date_format_locale>en_XK</date_format_locale>
+        <date_format_timezone>Europe/Vienna</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
     </row-meta>
@@ -861,13 +856,13 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
       </output>
     </remotesteps>
     <GUI>
-      <xloc>413</xloc>
-      <yloc>260</yloc>
+      <xloc>144</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Load product dat ato data mart</name>
+    <name>Load data to data mart</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -878,8 +873,8 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
       <schema_name/>
     </partitioning>
     <connection>BI_BikesDW_036</connection>
-    <schema/>
-    <table>Dim_Location</table>
+    <schema>BI_BikesDW_036</schema>
+    <table>Dim_Product</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -896,16 +891,24 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
     <return_field/>
     <fields>
       <field>
+        <column_name>ListPrice</column_name>
+        <stream_name>ListPrice</stream_name>
+      </field>
+      <field>
         <column_name>PK_DimProduct</column_name>
-        <stream_name>PK_DimProduct</stream_name>
+        <stream_name>ProductKey</stream_name>
+      </field>
+      <field>
+        <column_name>ProductModelName</column_name>
+        <stream_name>ProductModelName</stream_name>
       </field>
       <field>
         <column_name>ProductName</column_name>
         <stream_name>ProductName</stream_name>
       </field>
       <field>
-        <column_name>ProductModelName</column_name>
-        <stream_name>ProductModelName</stream_name>
+        <column_name>ProductStatus</column_name>
+        <stream_name>ProductStatus</stream_name>
       </field>
       <field>
         <column_name>ProductSubCategoryName</column_name>
@@ -916,24 +919,16 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
         <stream_name>ProductTopCategoryName</stream_name>
       </field>
       <field>
-        <column_name>StandardCost</column_name>
-        <stream_name>StandardCost</stream_name>
-      </field>
-      <field>
-        <column_name>ListPrice</column_name>
-        <stream_name>ListPrice</stream_name>
+        <column_name>SellEndDate</column_name>
+        <stream_name>EndDate</stream_name>
       </field>
       <field>
         <column_name>SellStartDate</column_name>
-        <stream_name>SellStartDate</stream_name>
+        <stream_name>StartDate</stream_name>
       </field>
       <field>
-        <column_name>SellEndDate</column_name>
-        <stream_name>SellEndDate</stream_name>
-      </field>
-      <field>
-        <column_name>ProductStatus</column_name>
-        <stream_name>ProductStatus</stream_name>
+        <column_name>StandardCost</column_name>
+        <stream_name>StandardCost</stream_name>
       </field>
     </fields>
     <attributes/>
@@ -945,8 +940,8 @@ INNER JOIN ProductTopCategory ptc ON psc.FK_ProductTopCategory_ProductSubCategor
       </output>
     </remotesteps>
     <GUI>
-      <xloc>637</xloc>
-      <yloc>260</yloc>
+      <xloc>272</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
