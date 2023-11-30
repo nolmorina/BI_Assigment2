@@ -7,11 +7,11 @@ Create TABLE IF NOT Exists Dim_Product
     ProductTopCategoryName VARCHAR(50)    NOT NULL,
     StandardCost           DECIMAL(13, 4) NOT NULL,
     ListPrice              DECIMAL(13, 4) NOT NULL,
-    SellStartDate          DATE           NOT NULL,
-    SellEndDate            DATE,
+    StartDate          DATE           NOT NULL,
+    EndDate            DATE,
     ProductStatus          VARCHAR(50),
     CHECK (
-    (ProductStatus = 'Current' AND (SellEndDate IS NULL OR SellEndDate > '2021-09-30')) OR 
-    (ProductStatus = 'Discontinued' AND SellEndDate IS NOT NULL AND SellEndDate <= '2021-09-30')),
+    (ProductStatus = 'Current' AND (EndDate IS NULL OR EndDate > '2021-09-30')) OR 
+    (ProductStatus = 'Discontinued' AND EndDate IS NOT NULL AND EndDate <= '2021-09-30')),
     PRIMARY KEY (PK_DimProduct)
 );
