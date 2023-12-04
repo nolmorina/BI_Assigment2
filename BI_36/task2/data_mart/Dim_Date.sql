@@ -1,6 +1,6 @@
 Create TABLE IF NOT Exists Dim_Date
 (
-    PK_DimDate           INT         NOT NULL,
+    DateKey              INT         NOT NULL,
     FullDateAlternateKey DATE         NOT NULL,
     DayNumberOfWeek      INT         NOT NULL,
     EnglishDayNameOfWeek VARCHAR(10) NOT NULL,
@@ -17,5 +17,6 @@ Create TABLE IF NOT Exists Dim_Date
            EnglishDayNameOfWeek = 'Sunday'),
     CHECK (1 <= DayNumberOfMonth AND DayNumberOfMonth <= 31),
     CHECK (1 <= DayNumberOfYear AND DayNumberOfYear <= 366),
-    PRIMARY KEY (PK_DimDate)
+    
+    CONSTRAINT PK_DimDate PRIMARY KEY (DateKey)
 );

@@ -1,6 +1,7 @@
-Create TABLE IF NOT Exists OrderStatus
+Create TABLE IF NOT Exists TB_OrderStatus
 (
-    PK_OrderStatus  INT         NOT NULL,
+    OrderStatusID  INT         NOT NULL,
     OrderStatusName VARCHAR(50) NOT NULL,
-    PRIMARY KEY (PK_OrderStatus)
+    
+    CONSTRAINT PK_OrderStatus PRIMARY KEY (OrderStatusID)
 );

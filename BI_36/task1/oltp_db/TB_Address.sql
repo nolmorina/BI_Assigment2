@@ -1,11 +1,12 @@
-Create TABLE IF NOT Exists Address
+Create TABLE IF NOT Exists TB_Address
 (
-    PK_Address  INT         NOT NULL ,
-    FK_Country_Address   INT         NOT NULL,
+    AddressID	INT         NOT NULL ,
+    CountryID 	INT         NOT NULL,
     AddressLine VARCHAR(60) NOT NULL,
     City        VARCHAR(30) NOT NULL,
     PostalCode  VARCHAR(15) NOT NULL,
-    PRIMARY KEY(PK_Address),
-    FOREIGN KEY (FK_Country_Address) references Country (PK_Country)
+    
+    CONSTRAINT PK_Address PRIMARY KEY (AddressID),
+    CONSTRAINT FK_Country_Address FOREIGN KEY (CountryID) REFERENCES TB_Country (CountryID)
 );
 

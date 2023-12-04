@@ -1,6 +1,6 @@
 Create TABLE IF NOT Exists Dim_Product
 (
-    PK_DimProduct          INT            NOT NULL,
+    ProductID         	   INT            NOT NULL,
     ProductName            VARCHAR(50)    NOT NULL,
     ProductModelName       VARCHAR(50)    NOT NULL,
     ProductSubCategoryName VARCHAR(50)    NOT NULL,
@@ -13,5 +13,6 @@ Create TABLE IF NOT Exists Dim_Product
     CHECK (
     (ProductStatus = 'Current' AND (EndDate IS NULL OR EndDate > '2021-09-30')) OR 
     (ProductStatus = 'Discontinued' AND EndDate IS NOT NULL AND EndDate <= '2021-09-30')),
-    PRIMARY KEY (PK_DimProduct)
+    
+    CONSTRAINT PK_DimProduct PRIMARY KEY (ProductID)
 );

@@ -1,8 +1,9 @@
-Create TABLE IF NOT Exists ProductSubCategory
+Create TABLE IF NOT Exists TB_ProductSubCategory
 (
-    PK_ProductSubCategory                    INT         NOT NULL,
-    FK_ProductTopCategory_ProductSubCategory INT         NOT NULL,
-    Name                                     VARCHAR(50) NOT NULL,
-    PRIMARY KEY (PK_ProductSubCategory),
-    FOREIGN KEY (FK_ProductTopCategory_ProductSubCategory) references ProductTopCategory (PK_ProductTopCategory)
+    ProductSubCategoryID	INT         NOT NULL,
+    ProductTopCategoryID	INT         NOT NULL,
+    Name                    VARCHAR(50) NOT NULL,
+
+    CONSTRAINT PK_ProductSubCategory PRIMARY KEY (ProductSubCategoryID),
+    CONSTRAINT FK_ProductTopCategory_ProductSubCategory FOREIGN KEY (ProductTopCategoryID) references TB_ProductTopCategory (ProductTopCategoryID)
 );

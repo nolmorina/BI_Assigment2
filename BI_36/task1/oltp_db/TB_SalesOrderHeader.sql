@@ -1,20 +1,21 @@
-CREATE TABLE IF NOT Exists SalesOrderHeader
+CREATE TABLE IF NOT Exists TB_SalesOrderHeader
 (
-    PK_SalesOrder                        INT         NOT NULL,
-    SalesOrderNumber                  VARCHAR(30) NOT NULL,
-    OrderDate                         DATE        NOT NULL,
-    DueDate                           DATE        NOT NULL,
-    ShipDate                          DATE,
-    FK_OrderStatusID_SalesOrderHeader INT         NOT NULL,
-    FK_Customer_SalesOrderHeader      INT         NOT NULL,
-    FK_BillToAddress_SalesOrderHeader INT         NOT NULL,
-    FK_ShipToAddress_SalesOrderHeader INT         NOT NULL,
-    FK_ShipMethod_SalesOrderHeader    INT         NOT NULL,
-
-    PRIMARY KEY (PK_SalesOrder),
-    FOREIGN KEY (FK_OrderStatusID_SalesOrderHeader) references OrderStatus (PK_OrderStatus),
-    FOREIGN KEY (FK_Customer_SalesOrderHeader) references Customer (PK_Customer),
-    FOREIGN KEY (FK_BillToAddress_SalesOrderHeader) references Address (PK_Address),
-    FOREIGN KEY (FK_ShipToAddress_SalesOrderHeader) references Address (PK_Address),
-    FOREIGN KEY (FK_ShipMethod_SalesOrderHeader) references ShipMethod (PK_ShipMethod)
+    SalesOrderID		INT         NOT NULL,
+    SalesOrderNumber	VARCHAR(30) NOT NULL,
+    OrderDate			DATE        NOT NULL,
+    DueDate				DATE        NOT NULL,
+    ShipDate			DATE,
+    OrderStatusID		INT         NOT NULL,
+    CustomerID			INT         NOT NULL,
+    BillToAddressID		INT         NOT NULL,
+    ShipToAddressID		INT         NOT NULL,
+    ShipMethodID		INT         NOT NULL,
+    
+    CONSTRAINT PK_SalesOrder PRIMARY KEY (SalesOrderID),
+    CONSTRAINT FK_OrderStatus_SalesOrderHeader FOREIGN KEY (OrderStatusID) references TB_OrderStatus (OrderStatusID),
+    CONSTRAINT FK_Customer_SalesOrderHeader FOREIGN KEY (CustomerID) references TB_Customer (CustomerID),
+    CONSTRAINT FK_BillToAddress_SalesOrderHeader FOREIGN KEY (BillToAddressID) references TB_Address (AddressID),
+    CONSTRAINT FK_ShipToAddress_SalesOrderHeader FOREIGN KEY (ShipToAddressID)  references TB_Address (AddressID),
+    CONSTRAINT FK_ShipMethod_SalesOrderHeader FOREIGN KEY (ShipMethodID) references TB_ShipMethod (ShipMethodID)
+    
 );

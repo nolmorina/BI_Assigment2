@@ -8,7 +8,7 @@
   <created_user>-</created_user>
   <created_date>2023/11/27 23:01:02.584</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2023/11/30 20:39:41.362</modified_date>
+  <modified_date>2023/12/03 15:03:51.180</modified_date>
   <parameters>
     <parameter>
       <name>MyPath</name>
@@ -449,7 +449,7 @@
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>SQL_Fast_InternetSales</name>
+      <name>SQL_Fact_InternetSales</name>
       <description/>
       <type>SQL</type>
       <attributes/>
@@ -506,7 +506,7 @@
     </hop>
     <hop>
       <from>SQL_Dim_Product</from>
-      <to>SQL_Fast_InternetSales</to>
+      <to>SQL_Fact_InternetSales</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

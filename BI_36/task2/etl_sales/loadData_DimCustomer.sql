@@ -1,12 +1,11 @@
-INSERT INTO BI_BikesDW_036.Dim_Customer
-(PK_DimCustomer, AccountNumber, FullName, Gender, Age)
+INSERT INTO BI_BikesDW_036.Dim_Customer (CustomerID, AccountNumber, FullName, Gender, Age)
 SELECT 
-    Customer.PK_Customer AS PK_DimCustomer,
-    Customer.AccountNumber,
-    CONCAT(Person.FirstName, ' ', IFNULL(Person.MiddleName, ''), ' ', Person.LastName) AS FullName,
-    Person.Gender,
-    TIMESTAMPDIFF(YEAR, Person.Birthday, '2021-09-30') AS Age 
+    TB_Customer.CustomerID, 
+    TB_Customer.AccountNumber, 
+    CONCAT(TB_Person.FirstName, ' ', TB_Person.LastName) AS FullName, 
+    TB_Person.Gender,
+    TIMESTAMPDIFF(YEAR, TB_Person.BirthDate, '2021-09-30') AS Age
 FROM 
-    BI_Bikes_036.Customer
-INNER JOIN 
-    BI_Bikes_036.Person ON Customer.FK_Person_Customer = Person.PK_Person;
+    BI_Bikes_036.TB_Customer
+JOIN 
+    BI_Bikes_036.TB_Person ON TB_Customer.PersonID = TB_Person.PersonID;

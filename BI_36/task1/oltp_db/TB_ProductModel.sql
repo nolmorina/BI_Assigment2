@@ -1,6 +1,7 @@
-Create TABLE IF NOT Exists ProductModel
+Create TABLE IF NOT Exists TB_ProductModel
 (
-    PK_ProductModel  INT         NOT NULL,
-    ProductModelName VARCHAR(50) NOT NULL,
-    PRIMARY KEY (PK_ProductModel)
+    ProductModelID		INT         NOT NULL,
+    ProductModelName	VARCHAR(50) NOT NULL,
+    
+    CONSTRAINT PK_ProductModel PRIMARY KEY (ProductModelID)
 );

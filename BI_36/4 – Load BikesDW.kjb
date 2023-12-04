@@ -8,7 +8,7 @@
   <created_user>-</created_user>
   <created_date>2023/11/30 19:52:29.954</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2023/11/30 21:01:59.298</modified_date>
+  <modified_date>2023/12/03 15:02:21.021</modified_date>
   <parameters>
     <parameter>
       <name>MyPath</name>
@@ -448,26 +448,26 @@
       <yloc>208</yloc>
       <attributes_kjc/>
     </entry>
+    <entry>
+      <name>SQL_Load_Facts</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql/>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>T</sqlfromfile>
+      <sqlfilename>${MyPath}/task2/etl_sales/loadData_FactInternetSales1.sql</sqlfilename>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>BI_BikesDW_036</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>736</xloc>
+      <yloc>208</yloc>
+      <attributes_kjc/>
+    </entry>
   </entries>
   <hops>
-    <hop>
-      <from>Start</from>
-      <to>SQL_DIM_Customer</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>SQL_DIM_Customer</from>
-      <to>SQL_DIM_Product</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
     <hop>
       <from>SQL_DIM_Product</from>
       <to>SQL_DIM_Location</to>
@@ -480,6 +480,33 @@
     <hop>
       <from>SQL_DIM_Location</from>
       <to>SQL_DIM_Date</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>SQL_DIM_Date</from>
+      <to>SQL_Load_Facts</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>SQL_DIM_Customer</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>SQL_DIM_Customer</from>
+      <to>SQL_DIM_Product</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

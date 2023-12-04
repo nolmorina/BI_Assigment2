@@ -1,24 +1,35 @@
-INSERT INTO DIM_Product
-(PK_DimProduct, ProductName, ProductModelName, ProductSubCategoryName, ProductTopCategoryName, StandardCost, ListPrice, StartDate, EndDate, ProductStatus)
+INSERT INTO BI_BikesDW_036.Dim_Product
+(
+    ProductID,
+    ProductName,
+    ProductModelName,
+    ProductSubCategoryName,
+    ProductTopCategoryName,
+    StandardCost,
+    ListPrice,
+    StartDate,
+    EndDate,
+    ProductStatus
+)
 SELECT 
-    Product.PK_Product AS PK_DimProduct,
-    Product.ProductName,
-    COALESCE(ProductModel.ProductModelName, 'NoModelName') AS ProductModelName,
-    COALESCE(ProductSubCategory.Name, 'NoSubCategory') AS ProductSubCategoryName,
-    COALESCE(ProductTopCategory.Name, 'NoTopCategory') AS ProductTopCategoryName,
-    Product.StandardCost,
-    Product.ListPrice,
-    Product.SellStartDate AS StartDate,
-    Product.SellEndDate AS EndDate,
+    BI_Bikes_036.TB_Product.ProductID,
+    BI_Bikes_036.TB_Product.ProductName,
+    COALESCE(BI_Bikes_036.TB_ProductModel.ProductModelName, 'NoModelName') AS ProductModelName,
+    COALESCE(BI_Bikes_036.TB_ProductSubCategory.Name, 'NoSubCategory') AS ProductSubCategoryName,
+    COALESCE(BI_Bikes_036.TB_ProductTopCategory.Name, 'NoTopCategory')  AS ProductTopCategoryName,
+    BI_Bikes_036.TB_Product.StandardCost,
+    BI_Bikes_036.TB_Product.ListPrice,
+    BI_Bikes_036.TB_Product.SellStartDate,
+    BI_Bikes_036.TB_Product.SellEndDate,
     CASE 
-        WHEN Product.SellEndDate IS NULL OR Product.SellEndDate > '2021-09-30' THEN 'Current'
+        WHEN BI_Bikes_036.TB_Product.SellEndDate IS NULL OR BI_Bikes_036.TB_Product.SellEndDate > '2021-09-30' THEN 'Current'
         ELSE 'Discontinued'
-    END AS ProductStatus
+    END
 FROM 
-    BI_Bikes_036.Product
+    BI_Bikes_036.TB_Product
 LEFT JOIN 
-    BI_Bikes_036.ProductSubCategory ON Product.FK_ProductSubCategory_Product = ProductSubCategory.PK_ProductSubCategory
+    BI_Bikes_036.TB_ProductSubCategory ON BI_Bikes_036.TB_Product.ProductSubCategoryID = BI_Bikes_036.TB_ProductSubCategory.ProductSubCategoryID
 LEFT JOIN 
-    BI_Bikes_036.ProductTopCategory ON ProductSubCategory.FK_ProductTopCategory_ProductSubCategory = ProductTopCategory.PK_ProductTopCategory
+    BI_Bikes_036.TB_ProductTopCategory ON BI_Bikes_036.TB_ProductSubCategory.ProductTopCategoryID = BI_Bikes_036.TB_ProductTopCategory.ProductTopCategoryID
 LEFT JOIN 
-    BI_Bikes_036.ProductModel ON Product.FK_ProductModel_Product = ProductModel.PK_ProductModel;
+    BI_Bikes_036.TB_ProductModel ON BI_Bikes_036.TB_Product.ProductModelID = BI_Bikes_036.TB_ProductModel.ProductModelID;
