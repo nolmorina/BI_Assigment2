@@ -1,0 +1,10 @@
+Select
+{[OrderDate].[Year].Members,
+[OrderDate].[Month].Members,
+[ShipToLocation].[Territory].[Country].Members,
+SUM([Measures].[TaxAmount])} on Columns
+From bike_sales
+WHERE 
+([ShipToLocation].[Territory].[Country].[France],
+[ShipToLocation].[Territory].[Country].[Germany],
+[OrderDate].[Year].[2021], [OrderDate].[Month].[1]:[OrderDate].[Month].[6])

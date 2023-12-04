@@ -1,0 +1,14 @@
+WITH
+SET[TOP_CUSTOMERS] AS
+TopCount([Customer].[FullName].Members, 10, [Measures].[Profit])
+WITH
+MEMBER[Measures].[CUSTOMER_RANK] AS
+RANK([TOP_CUSTOMERS].CurrentMember,
+[TOP_CUSTOMERS])
+SELECT
+{[Measures].[CUSTOMER_RANK], [TOP_CUSTOMERS].[FullName], [Measures].[Profit]} ON COLUMNS
+FROM bike_sales
+WHERE 
+([OrderDate].[Year].[2021], [OrderDate].[Month].[1]:[OrderDate].[Month].[6])
+ORDER_BY
+[Measures].[Profit] DESC

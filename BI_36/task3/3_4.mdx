@@ -1,0 +1,12 @@
+WITH
+SET [TopCustomers] AS
+TopCount ([Location].[Territory].[Region].[Europe].Children *  [Customer].[FullName].Members, 5, [Measures].[Quantity])
+Member [Members].[Rank] AS
+Rank([Customer].[FullName].CurrentMember,
+[TopCustomers], [Measures].[Quantity])
+Select
+{[Location].[Territory].[Region].Members, [TopCustomers],[Measures].[Quantity], [Meassurment].[Rank]} on Columns
+FROM bike_sales
+ORDER BY [Measures].[Quantity] DESC
+
+

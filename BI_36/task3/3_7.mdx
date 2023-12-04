@@ -1,0 +1,7 @@
+With
+SET [Profitable_Countries] AS
+TopCount(
+Filter([Location].[Territory].[Country].Members, [Measures].[UnitPrice]>=1000 AND [Measures].[UnitPrice]<=2000 ),
+3, [Measures].[Profit])
+SELECT{[Profitable_Countries],[Measures].[Profit]} on Columns
+FROM bike_sales

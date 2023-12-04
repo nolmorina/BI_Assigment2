@@ -1,0 +1,11 @@
+SELECT
+  {[ShipToLocation].[Territory].[Country].Members,
+[OrderDate].[Year].Members,
+[OrderDate].[Month].Members, SUM([Measures].[ShippingCost])} ON COLUMNS
+FROM
+  bike_sales
+WHERE
+([ShipToLocation].[Territory].[Country].[United Kingdom],
+[OrderDate].[Year].[2020],
+[ShipMethod].[Cargo International]
+)

@@ -1,0 +1,21 @@
+WITH
+  SET [TopProductsByCategory] AS
+    Generate(
+      [Product].[ProductCategory].[TopCategory].Members,
+      TopCount(
+        [Product].[ProductCategory].[TopCategory].CurrentMember *
+        [Product].[ProductCategory].[TopCategory].CurrentMember.Children *
+        [Product].[ProductModel].Members,
+        3,
+        SUM([Measures].[Quantity])
+      )
+    )
+
+SELECT
+  {[TopProductsByCategory],[TopProductsByCategory].[SubCategory],[TopProductsByCategory].[ProductModel].Members SUM([Measures].[Quantity])} ON COLUMNS
+
+From bike_sales
+
+ORDER BY
+  [Product].[ProductCategory].[TopCategory].Members,
+  [Measures].[Quantity] DESC
